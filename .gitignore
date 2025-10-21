@@ -1,0 +1,11 @@
+node_modules
+dist
+*.tgz
+.idea
+.npmrc
+.claude
+coverage
+*-test/quick-start.ts
+issue952-test/*.d.ts
+express-zod-api/*.md
+express-zod-api/LICENSE

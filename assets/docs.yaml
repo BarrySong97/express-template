@@ -1,0 +1,197 @@
+openapi: 3.1.0
+info:
+  title: Example API
+  version: 0.0.0
+paths:
+  /v1/email:
+    get:
+      operationId: GetV1Email
+      summary: Retrieves the user.
+      description: Example user retrieval endpoint.
+      parameters:
+        - name: email
+          in: query
+          required: true
+          description: The email to send the email to
+          schema:
+            description: The email to send the email to
+            type: string
+            minLength: 1
+            format: email
+            pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+      responses:
+        "200":
+          description: GET /v1/email Positive response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    const: success
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        examples:
+                          - Email sent successfully
+                        description: The message to send the email to
+                        type: string
+                        minLength: 1
+                    required:
+                      - message
+                    additionalProperties: false
+                    examples:
+                      - message: Email sent successfully
+                required:
+                  - status
+                  - data
+                additionalProperties: false
+              examples:
+                example1:
+                  value:
+                    status: success
+                    data:
+                      message: Email sent successfully
+        "400":
+          description: GET /v1/email Negative response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    const: error
+                  error:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                    required:
+                      - message
+                    additionalProperties: false
+                required:
+                  - status
+                  - error
+                additionalProperties: false
+              examples:
+                example1:
+                  value:
+                    status: error
+                    error:
+                      message: Sample error message
+    head:
+      operationId: HeadV1Email
+      summary: Retrieves the user.
+      description: Example user retrieval endpoint.
+      parameters:
+        - name: email
+          in: query
+          required: true
+          description: The email to send the email to
+          schema:
+            description: The email to send the email to
+            type: string
+            minLength: 1
+            format: email
+            pattern: ^(?!\.)(?!.*\.\.)([A-Za-z0-9_'+\-\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$
+      responses:
+        "200":
+          description: HEAD /v1/email Positive response
+        "400":
+          description: HEAD /v1/email Negative response
+    post:
+      operationId: PostV1Email
+      summary: Retrieves the email.
+      description: Retrieves the email.
+      requestBody:
+        description: POST /v1/email Request body
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        "200":
+          description: POST /v1/email Positive response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    const: success
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        examples:
+                          - Email sent successfully
+                        description: The message to send the email to
+                        type: string
+                        minLength: 1
+                    required:
+                      - message
+                    additionalProperties: false
+                    examples:
+                      - message: Email sent successfully
+                required:
+                  - status
+                  - data
+                additionalProperties: false
+              examples:
+                example1:
+                  value:
+                    status: success
+                    data:
+                      message: Email sent successfully
+        "400":
+          description: POST /v1/email Negative response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    const: error
+                  error:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                    required:
+                      - message
+                    additionalProperties: false
+                required:
+                  - status
+                  - error
+                additionalProperties: false
+              examples:
+                example1:
+                  value:
+                    status: error
+                    error:
+                      message: Sample error message
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}
+tags:
+  - name: users
+    description: Everything about the users
+  - name: files
+    description: Everything about the files processing
+  - name: subscriptions
+    description: Everything about the subscriptions
+servers:
+  - url: https://example.com
