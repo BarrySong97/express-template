@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { defaultEndpointsFactory } from "express-zod-api";
-import { methodProviderMiddleware } from "../middleware/method-provider.mjs";
+import { methodProviderMiddleware } from "../middleware/method-provider";
 
 // Demonstrating circular schemas using z.object()
 const feature = z.object({

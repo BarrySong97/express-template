@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "baseUrl": "./src",
+    "baseUrl": "./app",
     "paths": {
       "@/*": ["*"]
     },
@@ -14,15 +14,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "*.ts",
-    "app/**/*.ts",
-    "index.mts",
-    "index.mts",
-    "app/config.mts",
-    "app/routing.mts",
-    "app/controllers/email-controller.mts",
-    "app/middleware/method-provider.mts"
-  ],
+  "include": ["index.ts", "app"],
   "exclude": ["node_modules", "dist", "**/*.spec.ts"]
 }
