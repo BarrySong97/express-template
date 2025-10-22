@@ -1,14 +1,24 @@
 import { BuiltinLogger, createConfig } from "express-zod-api";
 import ui from "swagger-ui-express";
 import qs from "qs";
-import logger from "./logger";
+import logger, { httpLogger } from "./logger";
+import { randomUUID } from "crypto";
 export const config = createConfig({
   http: { listen: 3000 },
-  logger,
+  logger: logger,
+  childLoggerProvider: ({ parent, request: req }) =>
+    parent.child({
+      requestId: randomUUID(),
+      method: req.method,
+      path: req.path,
+      userAgent: req.headers["user-agent"],
+      ip: req.ip,
+    }), // a
   queryParser: (query) => qs.parse(query, { comma: true }), // affects listUsersEndpoint
   compression: true, // affects sendAvatarEndpoint
   // third-party middlewares serving their own routes or establishing their own routing besides the API
   beforeRouting: ({ app }) => {
+    app.use(httpLogger);
     app.use(
       "/api-docs",
       ui.serve,

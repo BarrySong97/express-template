@@ -20,7 +20,7 @@ const sendEmail = defaultEndpointsFactory
     }),
     output: z.object({ message: z.string() }),
     handler: async ({ input: { email }, options: { method }, logger }) => {
-      logger.debug(`Requested email: ${email}, method ${method}`);
+      logger.info(`Requested email: ${email}, method ${method}`);
       return {
         message: "Email sent successfully",
       };
@@ -34,7 +34,8 @@ const getEmail = defaultEndpointsFactory.build({
     message: z.string(),
   }),
   handler: async ({ logger }) => {
-    logger.debug("Requested email");
+    logger.info("Requested email");
+
     return {
       message: "Email sent successfully",
     };
