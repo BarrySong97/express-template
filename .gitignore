@@ -4,6 +4,7 @@ dist
 .idea
 .npmrc
 .claude
+.env
 coverage
 *-test/quick-start.ts
 issue952-test/*.d.ts

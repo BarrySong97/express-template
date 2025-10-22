@@ -1,5 +1,5 @@
 import { Routing, ServeStatic } from "express-zod-api";
-import { emailController } from "./app/controllers/email-controller.mjs";
+import { emailController } from "./controllers/email-controller.mjs";
 
 export const routing: Routing = {
   v1: {

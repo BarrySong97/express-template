@@ -1,13 +1,20 @@
 import { BuiltinLogger, createConfig } from "express-zod-api";
 import ui from "swagger-ui-express";
 import qs from "qs";
-import pino, { Logger } from "pino";
-
+import pino from "pino";
+const isDevelopment = process.env.NODE_ENV === "development";
 const logger = pino({
-  transport: {
-    target: "pino-pretty",
-    options: { colorize: true },
-  },
+  level: isDevelopment ? "debug" : "info",
+  transport: isDevelopment
+    ? {
+        target: "pino-pretty",
+        options: {
+          colorize: true,
+          ignore: "pid,hostname",
+          translateTime: "yyyy-mm-dd HH:MM:ss",
+        },
+      }
+    : undefined,
 });
 export const config = createConfig({
   http: { listen: 3000 },

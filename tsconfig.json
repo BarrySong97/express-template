@@ -19,8 +19,8 @@
     "app/**/*.ts",
     "index.mts",
     "index.mts",
-    "config.mts",
-    "routing.mts",
+    "app/config.mts",
+    "app/routing.mts",
     "app/controllers/email-controller.mts",
     "app/middleware/method-provider.mts"
   ],
