@@ -14,7 +14,7 @@ const sendEmail = defaultEndpointsFactory
   .addMiddleware(methodProviderMiddleware)
   .build({
     shortDescription: "Retrieves the user.",
-    description: "Example user retrieval endpoint.",
+    description: "Example user retrieval endpoint",
     input: z.object({
       email: z.email().example("test@example.com"),
     }),

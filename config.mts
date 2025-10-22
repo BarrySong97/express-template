@@ -1,11 +1,17 @@
 import { BuiltinLogger, createConfig } from "express-zod-api";
 import ui from "swagger-ui-express";
-import createHttpError from "http-errors";
 import qs from "qs";
+import pino, { Logger } from "pino";
 
+const logger = pino({
+  transport: {
+    target: "pino-pretty",
+    options: { colorize: true },
+  },
+});
 export const config = createConfig({
   http: { listen: 3000 },
-  logger: { level: "debug" },
+  logger,
   queryParser: (query) => qs.parse(query, { comma: true }), // affects listUsersEndpoint
   compression: true, // affects sendAvatarEndpoint
   // third-party middlewares serving their own routes or establishing their own routing besides the API

@@ -3,12 +3,11 @@
   "name": "example",
   "version": "0.0.0",
   "scripts": {
-    "dev": "tsx index.mts",
+    "dev": "tsx watch index.mts",
     "build": "tsc",
     "start": "node dist/index.mjs",
     "build:docs": "tsx ./scripts/generate-documentation.ts",
-    "pretest": "tsc --noEmit",
-    "test": "vitest run index.spec.ts"
+    "pretest": "tsc --noEmit"
   },
   "dependencies": {
     "@types/qs": "^6.14.0",
@@ -17,6 +16,7 @@
     "express-fileupload": "^1.5.2",
     "express-zod-api": "^25.5.3",
     "http-errors": "^2.0.0",
+    "pino": "^10.1.0",
     "qs": "^6.14.0",
     "typescript": "^5.9.3",
     "zod": "^4.1.12"
@@ -27,6 +27,7 @@
     "@types/http-errors": "^2.0.5",
     "@types/node": "^24.9.1",
     "@types/swagger-ui-express": "^4.1.8",
+    "pino-pretty": "^13.1.2",
     "swagger-ui-express": "^5.0.1"
   }
 }
